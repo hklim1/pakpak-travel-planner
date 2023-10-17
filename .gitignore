@@ -1,0 +1,33 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+
+# GUIDE FOR VITE
+# https://vitejs.dev/guide/
+
+# INSTALLS I HAVE ALREADY DONE
+# npm create vite@latest <name of project> --template react-ts
+# npm i boostrap react-bootstrap WITH "import 'bootstrap/dist/css/bootsrap.min.css'
+# npm i react-router-dom WITH "import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'"

@@ -1,0 +1,26 @@
+body{
+  background-color: black;
+  color: white;
+}
+
+.header{
+  column-gap: 10px;
+  border-bottom: 1px solid hotpink;
+  background-color: black;
+}
+
+.day-plan{
+  border: 1px solid white;
+  width: 240px;
+  height: 400px;
+  margin: 20px;
+  padding: 10px;
+}
+
+.planning-page-divs{
+  display: inline-flex;
+}
+
+h6{
+  text-decoration: underline;
+}
