@@ -5,7 +5,9 @@ import Container from 'react-bootstrap/esm/Container';
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import PlanningPage from "./pages/PlanningPage";
 import HomePage from "./pages/HomePage";
-import RegisterPage from "./pages/RegisterPage";
+import FormPage from "./pages/FormPage";
+import RegisterForm from "./components/forms/RegisterForm";
+import LoginForm from "./components/forms/LoginForm";
 
 function App(): JSX.Element {
 
@@ -15,8 +17,9 @@ function App(): JSX.Element {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<HomePage />}/>
+          <Route path='/register' element={<FormPage><RegisterForm /></FormPage>}/>
+          <Route path='/login' element={<FormPage><LoginForm /></FormPage>}/>
           <Route path='/plan' element={<PlanningPage />}/>
-          <Route path='/register' element={<RegisterPage />}/>
           <Route path='*' element={<Navigate to='/' />}/>
         </Routes>
       </BrowserRouter>

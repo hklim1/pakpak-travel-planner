@@ -32,7 +32,7 @@ function NavScrollExample() {
             <Button variant="outline-success" style={{ maxHeight: '40px', maxWidth: '80px'}}>Search</Button>
             <Nav className="ml-auto px-4">
                 <Nav.Link href="/register">REGISTER</Nav.Link>
-                <Nav.Link href="#">LOGIN</Nav.Link>
+                <Nav.Link href="/login">LOGIN</Nav.Link>
             </Nav>
           </Form>
         </Navbar.Collapse>
