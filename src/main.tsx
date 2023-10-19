@@ -1,3 +1,5 @@
+// complete
+
 // ,mostly the entrypoint. imports react, reactdom, etc. app.tsx is where we build out most of hte application. main.tsx contains our css
 
 import React from 'react'
@@ -7,9 +9,12 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import App from './App.tsx'
 import './styles.css'
+import UserProvider from './contexts/UserProvider.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render( //this grabs an html node to plug everything into
   <React.StrictMode>
-    <App />
+    <UserProvider>
+      <App />
+    </UserProvider>
   </React.StrictMode>,
 )

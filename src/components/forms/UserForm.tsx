@@ -1,3 +1,4 @@
+// complete
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -5,26 +6,29 @@ import Row from 'react-bootstrap/Row';
 
 import { useRef, FormEvent, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+
 import { User } from '../../types'
 
-export default function RegisterForm() {
-  const navigate = useNavigate()
+export default function UserForm({ edit } : { edit: boolean}) {
 
+  const navigate = useNavigate()
   const usernameField = useRef<HTMLInputElement>(null)
   const passwordField = useRef<HTMLInputElement>(null)
   const emailField = useRef<HTMLInputElement>(null)
   const fNameField = useRef<HTMLInputElement>(null)
   const lNameField = useRef<HTMLInputElement>(null)
 
-  useEffect(() => {
-    if(localStorage.getItem('token')){
+  useEffect(()=>{
+    if( !edit && localStorage.getItem('token')){
       navigate('/')
     }
-  }, [])
+  },[])
   
+
   async function handleRegisterData(e: FormEvent<HTMLElement>){ //we have a generic formevent and passing in an htmlelement
     e.preventDefault()
     // we're gonna take the data and send it to our application
+    
     const user: User = {
       username: usernameField.current!.value,
       password: passwordField.current!.value,
@@ -37,34 +41,32 @@ export default function RegisterForm() {
       user.last_name = lNameField.current?.value
     }
     clearFormData()
-    await registerUser(user)
+    await registerUser(user, edit )
   }
 
-  async function registerUser(user: User){
-    const res = await fetch('http://127.0.0.1:5000/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      // mode: 'no-cors',
+  async function registerUser(user: User, endpoint: boolean | string){
+    endpoint = endpoint ? 'user' : 'register'
+    const res = await fetch(`http://127.0.0.1:5000/${endpoint}`, {
+      method: edit ? 'PUT' : 'POST',
+      headers: { 'Content-Type': 'application/json',
+                  Authorization: `Bearer ${localStorage.getItem('token')!}`
+                },
       body: JSON.stringify(user)
     })
     const data = await res.json()
     console.log(data)
     if(!res.ok){ 
       window.alert('Register Failed')
-    } else navigate('/')
+    } else navigate('/login')
   }
-
+  
   function clearFormData(){
-    usernameField.current!.value = '',
-    passwordField.current!.value = '',
-    emailField.current!.value = '',
-    fNameField.current!.value = '',
+    usernameField.current!.value = ''
+    emailField.current!.value = ''
+    passwordField.current!.value = ''
+    fNameField.current!.value = ''
     lNameField.current!.value = ''
   }
-
-  // function test(){
-  //   console.log('=================HELLO=====================')
-  // }
 
   return (
     <Form className="py-4 px-4" onSubmit={handleRegisterData}>
@@ -96,7 +98,7 @@ export default function RegisterForm() {
         <Form.Control placeholder="Enter password" style={{ maxWidth:'615px'}} ref={passwordField} required/>
       </Form.Group>
 
-      <Button variant="primary" type="submit" className="my-3">
+      <Button variant="primary" type="submit" className="my-3" value={ edit ? 'Edit':'Register'}>
         Submit
       </Button>
     </Form>

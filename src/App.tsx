@@ -1,13 +1,16 @@
+// feels complete ?
+
 // import { useState } from 'react'
-// import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
-import Heading from "./components/Heading";
-import Container from 'react-bootstrap/esm/Container'; 
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
-import PlanningPage from "./pages/PlanningPage";
+import Container from 'react-bootstrap/esm/Container'; 
+
+import Heading from "./components/Heading";
 import HomePage from "./pages/HomePage";
 import FormPage from "./pages/FormPage";
-import RegisterForm from "./components/forms/RegisterForm";
 import LoginForm from "./components/forms/LoginForm";
+import UserForm from "./components/forms/UserForm";
+import Logout from "./components/Logout";
+import PlanningPage from "./pages/PlanningPage";
 
 function App(): JSX.Element {
 
@@ -17,8 +20,9 @@ function App(): JSX.Element {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<HomePage />}/>
-          <Route path='/register' element={<FormPage><RegisterForm /></FormPage>}/>
+          <Route path='/register' element={<FormPage><UserForm edit={false} /></FormPage>}/>
           <Route path='/login' element={<FormPage><LoginForm /></FormPage>}/>
+          <Route path='/logout' element={<Logout />}/>
           <Route path='/plan' element={<PlanningPage />}/>
           <Route path='*' element={<Navigate to='/' />}/>
         </Routes>

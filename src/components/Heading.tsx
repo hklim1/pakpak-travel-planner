@@ -7,7 +7,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 function NavScrollExample() {
   return (
-    <Navbar className="bg-body-tertiary">
+    <Navbar className='bg-body-tertiary'> 
       <Container fluid className='mx-0'>
         <Navbar.Brand href="/">PakPak</Navbar.Brand>
         <Navbar.Toggle aria-controls="PakPak" />
@@ -31,8 +31,21 @@ function NavScrollExample() {
             />
             <Button variant="outline-success" style={{ maxHeight: '40px', maxWidth: '80px'}}>Search</Button>
             <Nav className="ml-auto px-4">
+            { !localStorage.getItem('token') ?
+            <>
+              <Nav.Item>
                 <Nav.Link href="/register">REGISTER</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
                 <Nav.Link href="/login">LOGIN</Nav.Link>
+              </Nav.Item>
+            </> :
+            <>
+              <Nav.Item>
+                <Nav.Link href="/logout">LOGOUT</Nav.Link>
+              </Nav.Item>
+            </>
+            }
             </Nav>
           </Form>
         </Navbar.Collapse>
