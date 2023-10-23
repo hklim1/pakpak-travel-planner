@@ -1,3 +1,10 @@
+:root {
+  --primary: #55717e;
+  --dark: #061b28;
+  --gray: #756388;
+  --light: #ffffff;
+}
+
 body{
   background-color: black;
   color: white;
@@ -7,6 +14,23 @@ body{
   column-gap: 10px;
   border-bottom: 1px solid hotpink;
   background-color: black;
+}
+
+
+/* PLANNING PAGE ================================================================== */
+.planning-buttons {
+  margin: 50px;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  position: relative;
+}
+
+.planning-buttons button {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 180px;
+  height: 40px;
+  border-radius: 10px;
 }
 
 .day-plan{
@@ -19,6 +43,8 @@ body{
 
 .planning-page-divs{
   display: inline-flex;
+  position: absolute;
+  top: 12%;
 }
 
 h6{
