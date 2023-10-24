@@ -1,12 +1,12 @@
 :root {
-  --primary: #55717e;
-  --dark: #061b28;
-  --gray: #756388;
+  --primary: #FFD1DA;
+  --dark: #edafb8;
+  --gray: #f7e1d7;
   --light: #ffffff;
 }
 
 body{
-  background-color: black;
+  background-color: #f7e1d7;
   color: white;
 }
 
@@ -26,11 +26,73 @@ body{
   position: relative;
 }
 
+.mini-screen{
+  display: inline-flex;
+  position: absolute;
+  top: 12%;
+  border: 4px solid #dedbd2;
+  border-radius: 10px;
+  width: 90%;
+  height: 90%;
+}
+
+.triangle {
+  position: absolute;
+  top: -4%;
+  left: 7.3%;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top: 0;
+  border-bottom: 20px solid #dedbd2;
+}
+
+.triangle-transport {
+  position: absolute;
+  top: -4%;
+  left: 34.8%;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top: 0;
+  border-bottom: 20px solid #dedbd2;
+}
+
+.triangle-activities {
+  position: absolute;
+  top: -4%;
+  left: 63%;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top: 0;
+  border-bottom: 20px solid #dedbd2;
+}
+
+.triangle-map {
+  position: absolute;
+  top: -4%;
+  left: 90.7%;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top: 0;
+  border-bottom: 20px solid #dedbd2;
+}
+
+.planning-page-divs{
+  display: inline flex;
+}
+
 .planning-buttons button {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   width: 180px;
   height: 40px;
   border-radius: 10px;
+}
+
+.planning-buttons button:hover {
+  background-color: #b0c4b1;
 }
 
 .day-plan{
@@ -41,12 +103,6 @@ body{
   padding: 10px;
 }
 
-.planning-page-divs{
-  display: inline-flex;
-  position: absolute;
-  top: 12%;
-}
-
-h6{
+/* h6{
   text-decoration: underline;
-}
+} */
