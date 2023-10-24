@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import DayPlan from '../components/DayPlan'
+import { useState } from "react";
+import DayPlan from '../components/DayPlan';
+import Lodging from '../components/Lodging';
 
 export default function PlanningPage() {
   const [showLodging, setShowLodging] = useState(false);
@@ -13,6 +14,7 @@ export default function PlanningPage() {
     setShowActivities(false);
     setShowMap(false);
   }
+
   const onClickTransportation = () => {
     setShowTransportation(true);
     setShowLodging(false)
@@ -34,13 +36,11 @@ export default function PlanningPage() {
     setShowMap(true);
   }
   
-  const Lodging = () => (
+  const Lodging1 = () => (
     <>
     <div className="triangle"></div>
     <div className='planning-page-divs'>
-      <DayPlan date={new Date()} lodging='123 Abc St., Chicago, IL' />
-      <DayPlan date={new Date()} lodging='345 Xyz St., Irvine, CA' />
-      <DayPlan date={new Date()} lodging='789 Qrs St., St. Louis, MO' />
+      <Lodging />
     </div>
     </>
   )
@@ -78,12 +78,12 @@ export default function PlanningPage() {
   return (
     <>
     <div className='planning-buttons'>
-      <button onClick={onClickLodging}>LODGING</button>
-      <button onClick={onClickTransportation}>TRANSPORTATION</button>
-      <button onClick={onClickActivities}>ACTIVITIES</button>
-      <button onClick={onClickMap}>MAP</button>
+      <button className={showLodging ? 'active-button' : undefined} onClick={onClickLodging}>LODGING</button>
+      <button className={showTransportation ? 'active-button' : undefined} onClick={onClickTransportation}>TRANSPORTATION</button>
+      <button className={showActivities ? 'active-button' : undefined} onClick={onClickActivities}>ACTIVITIES</button>
+      <button className={showMap ? 'active-button' : undefined} onClick={onClickMap}>MAP</button>
       <div className="mini-screen">
-        { showLodging && <Lodging /> }
+        { showLodging && <Lodging1 /> }
         { showTransportation && <Transportation/>}
         { showActivities && <Activities />}
         { showMap && <Map />}

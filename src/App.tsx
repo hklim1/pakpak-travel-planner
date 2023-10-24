@@ -7,11 +7,14 @@ import Container from 'react-bootstrap/esm/Container';
 import Heading from "./components/Heading";
 import HomePage from "./pages/HomePage";
 import FormPage from "./pages/FormPage";
-import LoginForm from "./components/forms/LoginForm";
+import LoginForm, { Login } from "./components/forms/LoginForm";
 import UserForm from "./components/forms/UserForm";
 import Logout from "./components/Logout";
 import PlanningPage from "./pages/PlanningPage";
 import Sidebar from "../src/components/SideNavBar/Sidebar.jsx"
+import { initFirebase } from './firebaseUtils';
+
+initFirebase();
 
 function App(): JSX.Element {
 
@@ -24,7 +27,7 @@ function App(): JSX.Element {
           <Routes>
             <Route path='/' element={<HomePage />}/>
             <Route path='/register' element={<FormPage><UserForm edit={false} /></FormPage>}/>
-            <Route path='/login' element={<FormPage><LoginForm /></FormPage>}/>
+            <Route path='/login' element={<FormPage><LoginForm /><Login /></FormPage>}/>
             <Route path='/logout' element={<Logout />}/>
             <Route path='/plan' element={<PlanningPage />}/>
             <Route path='*' element={<Navigate to='/' />}/>

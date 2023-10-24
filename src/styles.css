@@ -95,6 +95,10 @@ body{
   background-color: #b0c4b1;
 }
 
+.active-button {
+  background-color: #b0c4b1;
+}
+
 .day-plan{
   border: 1px solid white;
   width: 240px;
