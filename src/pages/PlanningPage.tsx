@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DayPlan from '../components/DayPlan';
 import Lodging from '../components/Lodging';
+import SimpleMap from "../components/Map";
 
 export default function PlanningPage() {
   const [showLodging, setShowLodging] = useState(false);
@@ -68,9 +69,7 @@ export default function PlanningPage() {
     <>
     <div className='triangle-map'></div>
     <div className='planning-page-divs'>
-      <DayPlan date={new Date()} lodging='123 Abc St., Chicago, IL' />
-      <DayPlan date={new Date()} lodging='123 Abc St., Chicago, IL' />
-      <DayPlan date={new Date()} lodging='123 Abc St., Chicago, IL' />
+      <SimpleMap />
     </div>
     </>
   )
