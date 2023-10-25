@@ -11,7 +11,8 @@ import LoginForm, { Login } from "./components/forms/LoginForm";
 import UserForm from "./components/forms/UserForm";
 import Logout from "./components/Logout";
 import PlanningPage from "./pages/PlanningPage";
-import Sidebar from "../src/components/SideNavBar/Sidebar.jsx"
+import StartPlanningPage from './pages/StartPlanningPage.js';
+import Sidebar from "../src/components/SideNavBar/Sidebar.jsx";
 import { initFirebase } from './firebaseUtils';
 
 initFirebase();
@@ -29,7 +30,8 @@ function App(): JSX.Element {
             <Route path='/register' element={<FormPage><UserForm edit={false} /></FormPage>}/>
             <Route path='/login' element={<FormPage><LoginForm /><Login /></FormPage>}/>
             <Route path='/logout' element={<Logout />}/>
-            <Route path='/plan' element={<PlanningPage />}/>
+            {/* <Route path='/plan' element={<PlanningPage />}/> */}
+            <Route path='/plan' element={<StartPlanningPage />}/>
             <Route path='*' element={<Navigate to='/' />}/>
           </Routes>
         </BrowserRouter>

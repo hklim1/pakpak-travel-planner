@@ -21,7 +21,9 @@ export default function HomePage() {
               Easily organize your lodging, transportation, and activity plans
               for vacations & road trips - all in one website
             </p>
-            <button id="other-login-btn">Get Started</button>
+            <a href="/login">
+              <button id="other-login-btn">Get Started</button>
+            </a>
           </div>
         </div>
         <div id="heroImg">

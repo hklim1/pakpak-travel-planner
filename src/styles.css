@@ -42,7 +42,9 @@ body{
   right: 2%;
 }
 
-#logout-btn:hover{
+#logout-btn:hover,
+#register-btn:hover,
+#login-btn:hover{
   background-color: #ffd80b;
   color: #585656;
 }
@@ -51,16 +53,16 @@ body{
   display: inline-flex;
   position: absolute;
   margin: 20px 10px 0px 10px;
-  right: 8%;
+  right: 12%;
 }
 
 /* LANDING PAGE =================================================================== */
 /* ************TOP CONTAINER***************** */
 .top-container{
   position: relative;
+  margin-top: 5%;
   width: 100%;
   height: 700px;
-  border: 1px solid black;
 }
 
 .text-container{
@@ -187,7 +189,7 @@ body{
   top: 12%;
   border: 4px solid #dedbd2;
   border-radius: 10px;
-  width: 90%;
+  width: 98%;
   height: 90%;
 }
 
@@ -202,10 +204,21 @@ body{
   border-bottom: 20px solid #dedbd2;
 }
 
+.triangle-overview {
+  position: absolute;
+  top: -4%;
+  left: 8%;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top: 0;
+  border-bottom: 20px solid #dedbd2;
+}
+
 .triangle-transport {
   position: absolute;
   top: -4%;
-  left: 34.8%;
+  left: 49.4%;
   width: 0;
   height: 0;
   border: 10px solid transparent;
@@ -216,7 +229,7 @@ body{
 .triangle-activities {
   position: absolute;
   top: -4%;
-  left: 63%;
+  left: 70%;
   width: 0;
   height: 0;
   border: 10px solid transparent;
@@ -227,7 +240,7 @@ body{
 .triangle-map {
   position: absolute;
   top: -4%;
-  left: 90.7%;
+  left: 90.3%;
   width: 0;
   height: 0;
   border: 10px solid transparent;
@@ -237,6 +250,7 @@ body{
 
 .planning-page-divs{
   display: inline flex;
+  width: 100%;
 }
 
 .planning-buttons button {
@@ -254,6 +268,61 @@ body{
   background-color: #b0c4b1;
 }
 
+/* LODGING COMPONENT ============================================================================= */
+
+.lodging, .lodging-container {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.lodging-table, th, td {
+  border: solid 1px black;
+  color: black;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* .lodging-table tr {
+  padding: 5px;
+} */
+
+.lodging-table th, td{
+  padding: 5px;
+}
+
+.lodging-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* ======OVERVIEW================================================================================= */
+
+.start-planning-container{
+  border: 1px solid black;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overview-container{
+  /* border: 2px dashed blue; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .overview-wrapper{
+  width: 60%;
+  border: 1px solid green;
+} */
+
+.overviewH{
+  margin-bottom: 20px;
+  color: #585656;
+}
+/* =============================================================================================== */
 .day-plan{
   border: 1px solid white;
   width: 240px;

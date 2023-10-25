@@ -1,15 +1,27 @@
 import { useState } from "react";
 import DayPlan from '../components/DayPlan';
+import Overview from '../components/Overview'
 import Lodging from '../components/Lodging';
 import SimpleMap from "../components/Map";
+import LodgingYT from '../components/Lodging.jsx'
 
 export default function PlanningPage() {
+  const [showOverview, setShowOverview] = useState(false);
   const [showLodging, setShowLodging] = useState(false);
   const [showTransportation, setShowTransportation] = useState(false);
   const [showActivities, setShowActivities] = useState(false);
   const [showMap, setShowMap] = useState(false);
 
+  const onClickOverview = () => {
+    setShowOverview(true);
+    setShowLodging(false);
+    setShowTransportation(false);
+    setShowActivities(false);
+    setShowMap(false);
+  }
+
   const onClickLodging = () => {
+    setShowOverview(false);
     setShowLodging(true);
     setShowTransportation(false);
     setShowActivities(false);
@@ -17,6 +29,7 @@ export default function PlanningPage() {
   }
 
   const onClickTransportation = () => {
+    setShowOverview(false);
     setShowTransportation(true);
     setShowLodging(false)
     setShowActivities(false);
@@ -24,6 +37,7 @@ export default function PlanningPage() {
   }
 
   const onClickActivities = () => {
+    setShowOverview(false);
     setShowTransportation(false);
     setShowLodging(false)
     setShowActivities(true);
@@ -31,17 +45,28 @@ export default function PlanningPage() {
   }
 
   const onClickMap = () => {
+    setShowOverview(false);
     setShowTransportation(false);
     setShowLodging(false)
     setShowActivities(false);
     setShowMap(true);
   }
+
+  const Overview1 = () => (
+    <>
+    <div className="triangle-overview"></div>
+    <div className='planning-page-divs'>
+      <Overview />
+    </div>
+    </>
+  )
   
   const Lodging1 = () => (
     <>
     <div className="triangle"></div>
     <div className='planning-page-divs'>
-      <Lodging />
+      {/* <Lodging /> */}
+      < LodgingYT />
     </div>
     </>
   )
@@ -77,11 +102,13 @@ export default function PlanningPage() {
   return (
     <>
     <div className='planning-buttons'>
+      <button className={showOverview ? 'active-button' : undefined} onClick={onClickOverview}>OVERVIEW</button>
       <button className={showLodging ? 'active-button' : undefined} onClick={onClickLodging}>LODGING</button>
       <button className={showTransportation ? 'active-button' : undefined} onClick={onClickTransportation}>TRANSPORTATION</button>
       <button className={showActivities ? 'active-button' : undefined} onClick={onClickActivities}>ACTIVITIES</button>
       <button className={showMap ? 'active-button' : undefined} onClick={onClickMap}>MAP</button>
       <div className="mini-screen">
+        { showOverview && <Overview1 />}
         { showLodging && <Lodging1 /> }
         { showTransportation && <Transportation/>}
         { showActivities && <Activities />}
