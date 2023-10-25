@@ -126,8 +126,10 @@ export function Login() {
 
   const onSuccess = async (res) => {
     console.log("LOGIN SUCCESS! Current User: ");
-    const userInfo = jwtDecode(res.credential);
-    const accessToken = userInfo.sub
+    const userInfo: { sub: string; given_name: string } = jwtDecode(
+      res.credential
+    );
+    const accessToken = userInfo.sub;
     setUser({
       token: accessToken,
       username: accessToken ? userInfo.given_name : "",
@@ -135,7 +137,7 @@ export function Login() {
     localStorage.setItem("token", accessToken);
     navigate("/");
     console.log(userInfo);
-    console.log(localStorage, "====LOCAL STORAGE======")
+    console.log(localStorage, "====LOCAL STORAGE======");
   };
 
   const onFailure = () => {

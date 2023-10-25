@@ -1,22 +1,177 @@
 :root {
   --primary: #FFD1DA;
-  --dark: #edafb8;
+  --dark: #e27d60;
   --gray: #f7e1d7;
   --light: #ffffff;
 }
-
+/* #edafb8; */
 body{
-  background-color: #f7e1d7;
+  background-color: white;
   color: white;
 }
 
-.header{
+/* .header{
   column-gap: 10px;
   border-bottom: 1px solid hotpink;
   background-color: black;
+} */
+
+/* LOGIN / REGISTER / LOGOUT BUTTONS */
+.nav-buttons {
+  display: flex;
+  position: relative;
 }
 
+.nav-buttons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 45px;
+  border-radius: 15px;
+  background-color: var(--dark);
+  color: white;
+  font-weight: bold;
+}
 
+#login-btn,
+#logout-btn {
+  display: inline-flex;
+  position: absolute;
+  margin: 20px 10px 0px 10px;
+  right: 2%;
+}
+
+#logout-btn:hover{
+  background-color: #ffd80b;
+  color: #585656;
+}
+
+#register-btn {
+  display: inline-flex;
+  position: absolute;
+  margin: 20px 10px 0px 10px;
+  right: 8%;
+}
+
+/* LANDING PAGE =================================================================== */
+/* ************TOP CONTAINER***************** */
+.top-container{
+  position: relative;
+  width: 100%;
+  height: 700px;
+  border: 1px solid black;
+}
+
+.text-container{
+  /* border: solid 1px blue; */
+  height: 70%;
+  width: 50%;
+}
+
+.left-img img{
+  max-width: 40%;
+}
+.main-text {
+  max-width: 60%;
+  position: absolute;
+  color: black;
+  top: 27%;
+  left: 11%;
+}
+
+.main-text img{
+  /* width: 450px; */
+  /* height: 100px */
+  max-width: 60%;
+  height: 100px;
+}
+
+.parallelogram {
+	width: 480px;
+	height: 27px;
+	transform: skew(20deg);
+	background: yellow;
+  opacity: 0.2;
+  position: absolute;
+  top: 32%;
+  left: 11%;
+}
+
+.sub-text{
+  max-width: 27%;
+  /* width: 480px; */
+  height: 300px;
+  /* border: 1px solid green; */
+  position: absolute;
+  left: 11%;
+  top: 40%;
+}
+.sub-text p{
+  color: #585656;
+  font-family:sans-serif;
+  font-weight:normal;
+  font-size: x-large;
+}
+
+#other-login-btn{
+  position: absolute;
+  margin-top: 15px;
+  max-width: 80%;
+  width: 300px;
+  height: 50px;
+  border-radius: 12px;
+  background-color: var(--dark);
+  color: white;
+  font-size: large;
+  font-weight: bold;
+}
+
+#other-login-btn:hover{
+  background-color: #ffd80b;
+  color: #585656;
+}
+
+#heroImg{
+  display: inline;
+  position: absolute;
+  /* border: solid 1px black; */
+  height: 80%;
+  width: 55%;
+  top: 11%;
+  right: 0%;
+}
+
+#imageContainer{
+  position: relative;
+  display: flex;
+}
+
+#yellowBlobs{
+  position: absolute;
+  top: 5%;
+  left: 0;
+}
+
+#travelImage img{
+  position: absolute;
+  top: 22%;
+  left: 18%;
+  max-width: 58%;
+  /* width={"500px"} */
+  /* height: 330px */
+}
+
+#yellow-blob-img{
+  /* width: 700px; */
+  /* height: 550px; */
+  max-width: 100%;
+}
+
+/* REGISTER FORM ================================================================== */
+.register-form {
+  margin-top: 10%;
+}
 /* PLANNING PAGE ================================================================== */
 .planning-buttons {
   margin: 50px;
