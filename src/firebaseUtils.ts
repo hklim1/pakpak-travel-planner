@@ -71,7 +71,7 @@ const firebaseConfig = {
       }
     }
 
-    userTrip['lodgings'].push(lodgingData)
+    userTrip['lodgings'][lodgingData.lodgingId] = lodgingData;
 
     const tripsRef = doc(firebaseDB, 'Trips', userId);
 
@@ -81,6 +81,7 @@ const firebaseConfig = {
   }
 
   export async function editLodging(_tripId, lodgingData) {
+    const lodgingId = lodgingData.lodgingId;
     const userId = localStorage['token']
     const userTrips = await getAllUserTrips()
     const userTrip = await getUserTrip(_tripId)
@@ -95,8 +96,36 @@ const firebaseConfig = {
       }
     }
 
-    userTrip['lodgings'].push(lodgingData)
+    userTrip['lodgings'][lodgingId] = {...lodgingData}
 
+    const tripsRef = doc(firebaseDB, 'Trips', userId);
+
+    await updateDoc(tripsRef, {
+      trips: [...notImportantTrips, userTrip] 
+    })
+  }
+
+  export async function deleteLodging(_tripId, lodgingId) {
+    // TO GET TRIP:
+    const userId = localStorage['token']
+    const userTrips = await getAllUserTrips()
+    const userTrip = await getUserTrip(_tripId)
+    const tripLodgings = userTrip['lodgings']
+    
+    const notImportantTrips: any = []
+
+    for (let i=0; i < tripLodgings.length; i++){
+      const tripId=userTrips[i]['tripId']
+      if (tripId != _tripId) {
+        notImportantTrips.push(userTrips[i])
+      }
+    }
+    // ALL THAT WAS FOR TRIP
+
+    // DELETE LODGING USING LODGING ID
+    delete userTrip['lodgings'][lodgingId];
+
+    // UPDATE TRIPS AFTER DELETION
     const tripsRef = doc(firebaseDB, 'Trips', userId);
 
     await updateDoc(tripsRef, {

@@ -25,8 +25,8 @@ const LodgingEditableRow = ({ editFormData, handleEditFormChange, handleCancelCl
             <input type="text" placeholder="Confirmation Number" name="confirmationNumber" value={editFormData.confirmationNumber}  onChange={handleEditFormChange}></input>
         </td>
         <td>
-            <button type="submit">Save</button>
-            <button type="button" onClick={handleCancelClick}>Cancel</button>
+            <button type="submit" className="save-btns">Save</button>
+            <button type="button" className="cancel-btns" onClick={handleCancelClick}>Cancel</button>
         </td>
     </tr>
     )

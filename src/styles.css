@@ -58,11 +58,75 @@ body{
 
 /* LANDING PAGE =================================================================== */
 /* ************TOP CONTAINER***************** */
+
 .top-container{
   position: relative;
   margin-top: 5%;
   width: 100%;
-  height: 700px;
+  height: 100vh;
+}
+
+.other-container{
+  /* border: 1px solid red; */
+  height: 800px;
+  position: relative;
+}
+
+.image-holder{
+  /* border: 1px solid purple; */
+  position: absolute;
+  right: 4%;
+  height: 400px;
+  width: 80%;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 70px;
+}
+
+.image-holder p, h5{
+  color: black;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.image-holder h5{
+  font-weight: bold;
+  margin-bottom: 2px;
+  font-variant-caps: small-caps;
+}
+
+.info-card{
+  border: 3px solid;
+  border-color:var(--dark);
+  border-radius: 15px;
+  background-color: white;
+  width: 250px;
+  height: 200px;
+  padding: 10px;
+}
+
+.info-card-icon-r{
+  width: 65px;
+  height: 65px;
+  border-radius: 10px;
+  background-color: rgba(236, 100, 75, 0.3);
+  color: rgba(236, 100, 75, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.info-card-icon-g{
+  width: 65px;
+  height: 65px;
+  border-radius: 10px;
+  background-color: rgba(77, 175, 124, 0.3);
+  color: rgba(77, 175, 124, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
 }
 
 .text-container{
@@ -157,7 +221,7 @@ body{
 
 #travelImage img{
   position: absolute;
-  top: 22%;
+  top: 20%;
   left: 18%;
   max-width: 58%;
   /* width={"500px"} */
@@ -170,6 +234,21 @@ body{
   max-width: 100%;
 }
 
+.second-container{
+  /* border: 1px solid green; */
+  height: 400px;
+  position: relative;
+  /* max-width: 100%; */
+}
+
+#weird-shapes-container,
+#yellowHalfRoundedRectangle{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+/* #half-rectangle-image    */
 /* REGISTER FORM ================================================================== */
 .register-form {
   margin-top: 10%;
@@ -253,15 +332,24 @@ body{
   width: 100%;
 }
 
-.planning-buttons button {
+#top-lodging-btn,
+#top-transportation-btn,
+#top-activities-btn,
+#top-organize-btn,
+#top-map-btn {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   width: 180px;
   height: 40px;
   border-radius: 10px;
 }
 
-.planning-buttons button:hover {
+#top-lodging-btn:hover,
+#top-transportation-btn:hover,
+#top-activities-btn:hover,
+#top-organize-btn:hover,
+#top-map-btn:hover {
   background-color: #b0c4b1;
+
 }
 
 .planning-buttons h2{
@@ -279,10 +367,11 @@ body{
 
 /* LODGING COMPONENT ============================================================================= */
 
-.lodging, .lodging-container {
+.lodging-container {
   width: 100%;
   overflow-x: auto;
   overflow-y: auto;
+  margin: 10px;
 }
 
 .lodging-table, th, td {
@@ -290,6 +379,64 @@ body{
   color: black;
   width: 100%;
   table-layout: fixed;
+}
+
+.lodging-table thead{
+  background-color: rgba(242, 121, 53, 0.7);
+}
+
+#action-column{
+  display: flex;
+  align-items: center;
+  flex-direction:column;
+}
+
+.edit-btns,
+.delete-btns,
+.save-btns,
+.cancel-btns {
+  width: 120px;
+  height: 35px;
+  margin: 2px;
+  border-radius: 10px;
+}
+
+.add-btns{
+  width: 80px;
+  height: 32px;
+  margin: 2px;
+  border-radius: 15px;
+}
+
+.edit-btns{
+  /* opacity: 0.2; */
+  background-color: rgba(250, 216, 89, 0.7);
+}
+
+.edit-btns:hover{
+  background-color: #ffd80b;
+}
+
+.save-btns,
+.add-btns {
+  background-color: rgba(63, 195, 128, 0.6);
+}
+
+.save-btns:hover,
+.add-btns:hover {
+  background-color: rgba(63, 195, 128, 1);
+  color: black;
+}
+
+.delete-btns,
+.cancel-btns {
+  background-color: rgba(231, 76, 60, 0.6);
+}
+
+.delete-btns:hover,
+.cancel-btns:hover {
+  background-color: rgba(231, 76, 60, 1);
+  color: black;
 }
 
 /* .lodging-table tr {
@@ -301,9 +448,28 @@ body{
 }
 
 .lodging-table tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: rgba(242, 121, 53, 0.2);
 }
 
+#addLodgingForm{
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+h4 {
+  color: black;
+  text-decoration: underline;
+}
+
+hr {
+  color: black;
+  width: 90%;
+  text-align: center;
+  margin-left: 4%;
+  margin-bottom: 30px;
+}
 /* ======OVERVIEW================================================================================= */
 
 .start-planning-container{

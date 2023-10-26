@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { v4 as uuidv4} from 'uuid'
 
-import { getUserTrip, addLodging } from "../../firebaseUtils";
+import { getUserTrip, addLodging, deleteLodging } from "../../firebaseUtils";
 import LodgingReadOnlyRow from "./LodgingReadOnlyRow";
 import LodgingEditableRow from "./LodgingEditableRow";
 
 // import { LoggedUser } from "../../types";
 // import { UserProvider } from "../../contexts/UserProvider";
 
-export default function LodgingYT() {
+export default function Lodging() {
 
     // return(
     //     <button onClick={newDb}>Click Me</button>
@@ -146,7 +146,7 @@ export default function LodgingYT() {
 
     useEffect(() => {
         getUserTrip(tripId).then((trip)=>{
-            setLodgings(trip['lodgings'])
+            setLodgings(Object.values(trip['lodgings']))
     })
   }, []);
 
@@ -156,8 +156,33 @@ export default function LodgingYT() {
     setEditLodgingId(null);
   }
 
+  const handleDeleteClick = (lodgingId) => {
+    const newLodgings = [...lodgings];
+
+    const index = lodgings.findIndex((lodging) => lodging.lodgingId === lodgingId);
+
+    newLodgings.splice(index, 1)
+
+    setLodgings(newLodgings);
+
+    deleteLodging(tripId, lodgingId)
+
+  }
+
     return (
         <div className="lodging-container">
+            <h4>Add a Lodging:</h4>
+            <form id="addLodgingForm" onSubmit={handleAddFormSubmit}>
+                <input type="date" name="checkInDate" value={addFormData.checkInDate} placeholder="Check In Date" onChange={handleAddFormChange}></input>
+                <input type="date" name="checkOutDate" value={addFormData.checkOutDate} placeholder="Check Out Date" onChange={handleAddFormChange}></input>
+                <input type="text" name="address" value={addFormData.address} required="required" placeholder="Address" size='17' onChange={handleAddFormChange}></input>
+                <input type="text" name="price" size='17' value={addFormData.price} placeholder="Price" onChange={handleAddFormChange}></input>
+                <input type="text" name="bookingLink" size='17' value={addFormData.bookingLink} placeholder="Booking Link" onChange={handleAddFormChange}></input>
+                <input type="text" name="notes" size='17' value={addFormData.notes} placeholder="Notes" onChange={handleAddFormChange}></input>
+                <input type="text" name="confirmationNumber" size='17' value={addFormData.confirmationNumber} placeholder="Confirmation #" onChange={handleAddFormChange}></input>
+                <button className="add-btns" type="submit">Add</button>
+            </form>
+            <hr />
             <form onSubmit={handleEditFormSubmit}>
                 <table className="lodging-table">
                     <thead>
@@ -175,22 +200,11 @@ export default function LodgingYT() {
                     <tbody>
                         {lodgings.map((lodging) => (
                             <>
-                                { editLodgingId === lodging.lodgingId ? <LodgingEditableRow editFormData={editFormData} handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}/> : <LodgingReadOnlyRow lodging={lodging} handleEditClick={handleEditClick} />}
+                                { editLodgingId === lodging.lodgingId ? <LodgingEditableRow editFormData={editFormData} handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}/> : <LodgingReadOnlyRow lodging={lodging} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick}/>}
                             </>
                         ))}
                     </tbody>
                 </table>
-            </form>
-            <h2>Add a Lodging</h2>
-            <form onSubmit={handleAddFormSubmit}>
-                <input type="text" name="checkInDate" value={addFormData.checkInDate} placeholder="Check In Date" onChange={handleAddFormChange}></input>
-                <input type="text" name="checkOutDate" value={addFormData.checkOutDate} placeholder="Check Out Date" onChange={handleAddFormChange}></input>
-                <input type="text" name="address" value={addFormData.address} required="required" placeholder="Address" onChange={handleAddFormChange}></input>
-                <input type="text" name="price" value={addFormData.price} placeholder="Price" onChange={handleAddFormChange}></input>
-                <input type="text" name="bookingLink" value={addFormData.bookingLink} placeholder="Booking Link" onChange={handleAddFormChange}></input>
-                <input type="text" name="notes" value={addFormData.notes} placeholder="Notes" onChange={handleAddFormChange}></input>
-                <input type="text" name="confirmationNumber" value={addFormData.confirmationNumber} placeholder="Confirmation #" onChange={handleAddFormChange}></input>
-                <button type="submit">Add</button>
             </form>
         </div>
   )

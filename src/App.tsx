@@ -14,6 +14,7 @@ import PlanningPage from "./pages/PlanningPage";
 import StartPlanningPage from './pages/StartPlanningPage.js';
 import Sidebar from "../src/components/SideNavBar/Sidebar.jsx";
 import { initFirebase } from './firebaseUtils';
+import UpcomingTripsPage from './pages/UpcomingTripsPage.js';
 
 initFirebase();
 
@@ -32,6 +33,7 @@ function App(): JSX.Element {
             <Route path='/logout' element={<Logout />}/>
             <Route path='/edit/:tripId' element={<PlanningPage />}/>
             <Route path='/plan' element={<StartPlanningPage />}/>
+            <Route path='/upcoming' element={<UpcomingTripsPage />}/>
             <Route path='*' element={<Navigate to='/' />}/>
           </Routes>
         </BrowserRouter>

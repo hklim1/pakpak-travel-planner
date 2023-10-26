@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import DayPlan from "../components/DayPlan";
-import Overview from "../components/Overview";
-import Lodging from "../components/Lodging";
+import Overview from "../components/Overview"
 import SimpleMap from "../components/Map";
-import LodgingYT from "../components/Lodging/Lodging.jsx"
+import Lodging from "../components/Lodging/Lodging.jsx"
 import { useParams } from "react-router-dom";
 import { getUserTrip } from "../firebaseUtils.js";
 
@@ -78,7 +77,7 @@ export default function PlanningPage() {
       <div className="triangle"></div>
       <div className="planning-page-divs">
         {/* <Lodging /> */}
-        <LodgingYT />
+        <Lodging />
       </div>
     </>
   );
@@ -118,30 +117,35 @@ export default function PlanningPage() {
         <h2>{`Planning for: ${tripName}`}</h2>
         {/* <p>{ tripId }</p> */}
         <button
+          id="top-lodging-btn"
           className={showLodging ? "active-button" : undefined}
           onClick={onClickLodging}
         >
           LODGING
         </button>
         <button
+          id="top-transportation-btn"
           className={showTransportation ? "active-button" : undefined}
           onClick={onClickTransportation}
         >
           TRANSPORTATION
         </button>
         <button
+          id="top-activities-btn"
           className={showActivities ? "active-button" : undefined}
           onClick={onClickActivities}
         >
           ACTIVITIES
         </button>
         <button
+          id="top-organize-btn"
           className={showOverview ? "active-button" : undefined}
           onClick={onClickOverview}
         >
           ORGANIZE
         </button>
         <button
+          id="top-map-btn"
           className={showMap ? "active-button" : undefined}
           onClick={onClickMap}
         >

@@ -26,9 +26,11 @@
     "lucide-react": "^0.288.0",
     "lucide-static": "^0.288.0",
     "react": "^17.0.0 || ^18.0.0",
+    "react-beautiful-dnd": "^13.1.1",
     "react-bootstrap": "^2.9.0",
     "react-dom": "^17.0.0 || ^18.0.0",
-    "react-router-dom": "^6.17.0"
+    "react-router-dom": "^6.17.0",
+    "styled-components": "^6.1.0"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
