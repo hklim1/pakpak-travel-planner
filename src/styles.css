@@ -3,11 +3,12 @@
   --dark: #e27d60;
   --gray: #f7e1d7;
   --light: #ffffff;
+  /* @apply bg-black text-white box-border; */
 }
 /* #edafb8; */
 body{
   background-color: white;
-  color: white;
+  color: black;
 }
 
 /* .header{
@@ -283,10 +284,10 @@ body{
   border-bottom: 20px solid #dedbd2;
 }
 
-.triangle-overview {
+.triangle-organize {
   position: absolute;
   top: -4%;
-  left: 8%;
+  left: 69.6%;
   width: 0;
   height: 0;
   border: 10px solid transparent;
@@ -297,7 +298,7 @@ body{
 .triangle-transport {
   position: absolute;
   top: -4%;
-  left: 49.4%;
+  left: 28.5%;
   width: 0;
   height: 0;
   border: 10px solid transparent;
@@ -308,7 +309,7 @@ body{
 .triangle-activities {
   position: absolute;
   top: -4%;
-  left: 70%;
+  left: 49%;
   width: 0;
   height: 0;
   border: 10px solid transparent;
@@ -329,6 +330,7 @@ body{
 
 .planning-page-divs{
   display: inline flex;
+  /* border: 2px solid green; */
   width: 100%;
 }
 
@@ -356,7 +358,8 @@ body{
   color: black;
   position: absolute;
   top: -12%;
-  font-family: cursive;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-variant-caps: all-small-caps;
   text-decoration: underline;
   color: #585656;
 }
@@ -497,6 +500,36 @@ hr {
   margin-bottom: 20px;
   color: #585656;
 }
+
+/* UPCOMING TRIPS =============================================================================== */
+
+#upcoming-trips-heading{
+  margin-top: 100px;
+  margin-left: 60px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-variant-caps: all-small-caps;
+  text-decoration: underline;
+}
+.upcoming-trips-divs{
+  display: inline-flex;
+  margin: 10px 50px 100px 50px;
+  justify-content: space-around;
+}
+
+.whole-card {
+  margin: 15px;
+  border: 1px solid black;
+  border-radius: 6px;
+}
+.card-icon-div {
+  border-bottom: 1px solid black;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.card-body {
+  background-color: #cfe1b9;}
 /* =============================================================================================== */
 .day-plan{
   border: 1px solid white;

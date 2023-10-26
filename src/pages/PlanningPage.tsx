@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import DayPlan from "../components/DayPlan";
-import Overview from "../components/Overview"
+// import Overview from "../components/Overview"
 import SimpleMap from "../components/Map";
 import Lodging from "../components/Lodging/Lodging.jsx"
+import Board from "../components/Organize/Board.jsx"
+import KanbanBoard from "../components/DragDrop/KanbanBoard.js"
 import { useParams } from "react-router-dom";
 import { getUserTrip } from "../firebaseUtils.js";
 
 export default function PlanningPage() {
   const { tripId } = useParams();
 
-  const [showOverview, setShowOverview] = useState(false);
+  const [showOrganize, setShowOrganize] = useState(false);
   const [showLodging, setShowLodging] = useState(false);
   const [showTransportation, setShowTransportation] = useState(false);
   const [showActivities, setShowActivities] = useState(false);
@@ -23,8 +25,8 @@ export default function PlanningPage() {
     })
   }, []);
 
-  const onClickOverview = () => {
-    setShowOverview(true);
+  const onClickOrganize = () => {
+    setShowOrganize(true);
     setShowLodging(false);
     setShowTransportation(false);
     setShowActivities(false);
@@ -32,7 +34,7 @@ export default function PlanningPage() {
   };
 
   const onClickLodging = () => {
-    setShowOverview(false);
+    setShowOrganize(false);
     setShowLodging(true);
     setShowTransportation(false);
     setShowActivities(false);
@@ -40,7 +42,7 @@ export default function PlanningPage() {
   };
 
   const onClickTransportation = () => {
-    setShowOverview(false);
+    setShowOrganize(false);
     setShowTransportation(true);
     setShowLodging(false);
     setShowActivities(false);
@@ -48,7 +50,7 @@ export default function PlanningPage() {
   };
 
   const onClickActivities = () => {
-    setShowOverview(false);
+    setShowOrganize(false);
     setShowTransportation(false);
     setShowLodging(false);
     setShowActivities(true);
@@ -56,18 +58,18 @@ export default function PlanningPage() {
   };
 
   const onClickMap = () => {
-    setShowOverview(false);
+    setShowOrganize(false);
     setShowTransportation(false);
     setShowLodging(false);
     setShowActivities(false);
     setShowMap(true);
   };
 
-  const Overview1 = () => (
+  const Organize1 = () => (
     <>
-      <div className="triangle-overview"></div>
+      <div className="triangle-organize"></div>
       <div className="planning-page-divs">
-        <Overview />
+        <KanbanBoard />
       </div>
     </>
   );
@@ -114,7 +116,7 @@ export default function PlanningPage() {
   return (
     <>
       <div className="planning-buttons">
-        <h2>{`Planning for: ${tripName}`}</h2>
+        <h2>{`❀ Planning for: ${tripName} ❀`}</h2>
         {/* <p>{ tripId }</p> */}
         <button
           id="top-lodging-btn"
@@ -139,8 +141,8 @@ export default function PlanningPage() {
         </button>
         <button
           id="top-organize-btn"
-          className={showOverview ? "active-button" : undefined}
-          onClick={onClickOverview}
+          className={showOrganize ? "active-button" : undefined}
+          onClick={onClickOrganize}
         >
           ORGANIZE
         </button>
@@ -152,7 +154,7 @@ export default function PlanningPage() {
           MAP
         </button>
         <div className="mini-screen">
-          {showOverview && <Overview1 />}
+          {showOrganize && <Organize1 />}
           {showLodging && <Lodging1 />}
           {showTransportation && <Transportation />}
           {showActivities && <Activities />}

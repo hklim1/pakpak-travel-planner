@@ -135,13 +135,15 @@ const firebaseConfig = {
 
   export async function createNewTrip(_id, _tripName, _startDate, _endDate){
     const newTrip = doc(firebaseDB, "Trips", `${localStorage['token']}`);
-
-    await updateDoc(newTrip, {
-      trips: [
-        {tripId: _id,
-        tripName: _tripName,
-        startDate: _startDate,
-        endDate: _endDate}
-      ]
+    const allUsersTrips = await getAllUserTrips()
+    
+    allUsersTrips.push({tripId: _id,
+      tripName: _tripName,
+      startDate: _startDate,
+      endDate: _endDate})
+    
+      await updateDoc(newTrip, {
+      trips: allUsersTrips
+      
     });
   }

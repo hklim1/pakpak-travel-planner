@@ -132,10 +132,12 @@ export function Login() {
       res.credential
     );
     const accessToken = userInfo.sub;
+    const userFN = userInfo.given_name
     setUser({
       token: accessToken,
       username: accessToken ? userInfo.given_name : "",
     });
+    localStorage.setItem("userFirstName", userFN)
     localStorage.setItem("token", accessToken);
     getFirebaseUser(accessToken)
     navigate("/");
