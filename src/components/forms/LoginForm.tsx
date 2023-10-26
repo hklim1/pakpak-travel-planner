@@ -19,6 +19,8 @@ import {
   // useGoogleLogin,
 } from "@react-oauth/google";
 
+import { getFirebaseUser } from '../../firebaseUtils'
+
 export default function LoginForm() {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
@@ -135,6 +137,7 @@ export function Login() {
       username: accessToken ? userInfo.given_name : "",
     });
     localStorage.setItem("token", accessToken);
+    getFirebaseUser(accessToken)
     navigate("/");
     console.log(userInfo);
     console.log(localStorage, "====LOCAL STORAGE======");

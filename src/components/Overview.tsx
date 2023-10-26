@@ -1,47 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { TextField, Button, Stack } from "@mui/material";
+import { createNewTrip } from "../firebaseUtils";
+import { stringify } from "uuid";
+import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4} from 'uuid'
+
 // import { Link } from "react-router-dom"
 
-import { firebaseDB } from "../firebaseUtils";
-import { collection, getDocs } from "firebase/firestore";
-import { doc, setDoc } from "firebase/firestore"; 
+// import { firebaseDB } from "../firebaseUtils";
+// import { collection, getDocs } from "firebase/firestore";
+// import { doc, setDoc } from "firebase/firestore"; 
 
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+// import { initializeApp } from "firebase/app";
+// import { getFirestore } from "firebase/firestore";
 
 const Overview = () => {
-  useEffect(() => {
-    const getData = async () => {
-      const firebaseCollection = collection(firebaseDB, "Trips");
-      const snapshot = await getDocs(firebaseCollection);
-      const newData = snapshot.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      console.log(newData);
-    };
-    getData();
-  }, []);
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyC0ybQdzfihqslkgokEYgVi6KQP_mTn28Q",
-    authDomain: "pakpak-cebea.firebaseapp.com",
-    projectId: "pakpak-cebea",
-    storageBucket: "pakpak-cebea.appspot.com",
-    messagingSenderId: "347170407823",
-    appId: "1:347170407823:web:04b1d5f2ab8953925037fa",
-  };
-
-  const app = initializeApp(firebaseConfig);
-
-  const db = getFirestore(app);
-
+  
+    const navigate = useNavigate();
   const [tripName, setTripName] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
   function handleSubmit(event) {
+    const randomId = uuidv4()
+    createNewTrip(randomId, tripName, startDate, endDate)
     event.preventDefault();
+    navigate(`/edit/${randomId}`)
     console.log(tripName, startDate, endDate);
   }
 

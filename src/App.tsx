@@ -30,7 +30,7 @@ function App(): JSX.Element {
             <Route path='/register' element={<FormPage><UserForm edit={false} /></FormPage>}/>
             <Route path='/login' element={<FormPage><LoginForm /><Login /></FormPage>}/>
             <Route path='/logout' element={<Logout />}/>
-            {/* <Route path='/plan' element={<PlanningPage />}/> */}
+            <Route path='/edit/:tripId' element={<PlanningPage />}/>
             <Route path='/plan' element={<StartPlanningPage />}/>
             <Route path='*' element={<Navigate to='/' />}/>
           </Routes>

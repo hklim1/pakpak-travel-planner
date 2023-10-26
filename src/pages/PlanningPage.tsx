@@ -4,8 +4,11 @@ import Overview from '../components/Overview'
 import Lodging from '../components/Lodging';
 import SimpleMap from "../components/Map";
 import LodgingYT from '../components/Lodging.jsx'
+import {useParams} from "react-router-dom";
 
 export default function PlanningPage() {
+  const { tripId } = useParams()
+
   const [showOverview, setShowOverview] = useState(false);
   const [showLodging, setShowLodging] = useState(false);
   const [showTransportation, setShowTransportation] = useState(false);
@@ -102,6 +105,7 @@ export default function PlanningPage() {
   return (
     <>
     <div className='planning-buttons'>
+      {/* <p>{ tripId }</p> */}
       <button className={showOverview ? 'active-button' : undefined} onClick={onClickOverview}>OVERVIEW</button>
       <button className={showLodging ? 'active-button' : undefined} onClick={onClickLodging}>LODGING</button>
       <button className={showTransportation ? 'active-button' : undefined} onClick={onClickTransportation}>TRANSPORTATION</button>
