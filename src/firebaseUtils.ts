@@ -35,6 +35,51 @@ const firebaseConfig = {
     }
   }
 
+  export async function getAllUserTrips() {
+    const userId = localStorage['token']
+    const docRef = doc(firebaseDB, 'Trips', userId);
+    const docSnap = await getDoc(docRef);
+    const userData = docSnap.data()?.['trips']
+    return userData
+  }
+
+  export async function getUserTrip(_tripId) {
+    const userId = localStorage['token']
+    const docRef = doc(firebaseDB, 'Trips', userId);
+    const docSnap = await getDoc(docRef);
+    const userData = docSnap.data()?.['trips']
+    
+    for (let i=0; i < userData.length; i++){
+      const tripId=userData[i]['tripId']
+      if (tripId === _tripId) {
+        console.log(userData[i])
+        return userData[i]
+      }
+    }
+  }
+
+  export async function addLodging(_tripId, lodgingData) {
+    const userId = localStorage['token']
+    const userTrips = await getAllUserTrips()
+    const userTrip = await getUserTrip(_tripId)
+    
+    const notImportantTrips: any = []
+    for (let i=0; i < userTrips.length; i++){
+      const tripId=userTrips[i]['tripId']
+      if (tripId != _tripId) {
+        notImportantTrips.push(userTrips[i])
+      }
+    }
+
+    userTrip['lodgings'].push(lodgingData)
+
+    const tripsRef = doc(firebaseDB, 'Trips', userId);
+
+    await updateDoc(tripsRef, {
+      trips: [...notImportantTrips, userTrip] 
+    })
+  }
+
   export async function createNewTrip(_id, _tripName, _startDate, _endDate){
     const newTrip = doc(firebaseDB, "Trips", `${localStorage['token']}`);
 

@@ -264,6 +264,15 @@ body{
   background-color: #b0c4b1;
 }
 
+.planning-buttons h2{
+  color: black;
+  position: absolute;
+  top: -12%;
+  font-family: cursive;
+  text-decoration: underline;
+  color: #585656;
+}
+
 .active-button {
   background-color: #b0c4b1;
 }
