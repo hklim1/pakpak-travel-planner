@@ -80,6 +80,30 @@ const firebaseConfig = {
     })
   }
 
+  export async function editLodging(_tripId, lodgingData) {
+    const userId = localStorage['token']
+    const userTrips = await getAllUserTrips()
+    const userTrip = await getUserTrip(_tripId)
+    const tripLodgings = userTrip['lodgings']
+    
+    const notImportantTrips: any = []
+
+    for (let i=0; i < tripLodgings.length; i++){
+      const tripId=userTrips[i]['tripId']
+      if (tripId != _tripId) {
+        notImportantTrips.push(userTrips[i])
+      }
+    }
+
+    userTrip['lodgings'].push(lodgingData)
+
+    const tripsRef = doc(firebaseDB, 'Trips', userId);
+
+    await updateDoc(tripsRef, {
+      trips: [...notImportantTrips, userTrip] 
+    })
+  }
+
   export async function createNewTrip(_id, _tripName, _startDate, _endDate){
     const newTrip = doc(firebaseDB, "Trips", `${localStorage['token']}`);
 

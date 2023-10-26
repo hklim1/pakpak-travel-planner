@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { v4 as uuidv4} from 'uuid'
 
-import { getUserTrip, addLodging } from "../firebaseUtils";
+import { getUserTrip, addLodging } from "../../firebaseUtils";
+import LodgingReadOnlyRow from "./LodgingReadOnlyRow";
+import LodgingEditableRow from "./LodgingEditableRow";
 
 // import { LoggedUser } from "../../types";
 // import { UserProvider } from "../../contexts/UserProvider";
@@ -27,6 +29,18 @@ export default function LodgingYT() {
         confirmationNumber: ''
     })
 
+    const [editFormData, setEditFormData] = useState({
+        checkInDate: '',
+        checkOutDate: '',
+        address: '',
+        price: 0,
+        bookingLink: '',
+        notes: '',
+        confirmationNumber: ''
+    })
+
+    const [editLodgingId, setEditLodgingId] = useState(null);
+
     const handleAddFormChange = (event) => {
         event.preventDefault();
 
@@ -37,6 +51,45 @@ export default function LodgingYT() {
         newFormData[fieldName] = fieldValue;
 
         setAddFormData(newFormData);
+    }
+
+    const handleEditFormSubmit = (event) => {
+        event.preventDefault();
+
+        const editedLodging = {
+            lodgingId: editLodgingId,
+            checkInDate: editFormData.checkInDate,
+            checkOutDate: editFormData.checkOutDate,
+            address: editFormData.address,
+            price: editFormData.price,
+            bookingLink: editFormData.bookingLink,
+            notes: editFormData.notes,
+            confirmationNumber: editFormData.confirmationNumber
+        }
+
+        const newLodgings = [...lodgings];
+
+        const index = lodgings.findIndex((lodging) => lodging.lodgingId === editLodgingId);
+
+        newLodgings[index] = editedLodging;
+
+        addLodging(tripId, editedLodging)
+
+        setLodgings(newLodgings);
+        setEditLodgingId(null);
+
+    }
+
+    const handleEditFormChange = (event) => {
+        event.preventDefault();
+
+        const fieldName = event.target.getAttribute("name");
+        const fieldValue = event.target.value;
+
+        const newFormData = { ...editFormData }
+        newFormData[fieldName] = fieldValue;
+
+        setEditFormData(newFormData);
     }
 
     function clearForm() {
@@ -74,6 +127,23 @@ export default function LodgingYT() {
         clearForm();
     }
 
+    const handleEditClick = (event, lodging) => {
+        event.preventDefault();
+        setEditLodgingId(lodging.lodgingId);
+
+        const formValues = {
+            checkInDate: lodging.checkInDate,
+            checkOutDate: lodging.checkOutDate,
+            address: lodging.address,
+            price: lodging.price,
+            bookingLink: lodging.bookingLink,
+            notes: lodging.notes,
+            confirmationNumber: lodging.confirmationNumber
+        }
+
+        setEditFormData(formValues);
+    }
+
     useEffect(() => {
         getUserTrip(tripId).then((trip)=>{
             setLodgings(trip['lodgings'])
@@ -82,34 +152,35 @@ export default function LodgingYT() {
 
   console.log(lodgings)
 
+  const handleCancelClick = () => {
+    setEditLodgingId(null);
+  }
+
     return (
         <div className="lodging-container">
-            <table className="lodging-table">
-                <thead>
-                    <tr>
-                        <th>Check-In Date</th>
-                        <th>Check-Out Date</th>
-                        <th>Address</th>
-                        <th>Price</th>
-                        <th>Booking Link</th>
-                        <th>Notes</th>
-                        <th>Confirmation #</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {lodgings.map((lodging) => (
+            <form onSubmit={handleEditFormSubmit}>
+                <table className="lodging-table">
+                    <thead>
                         <tr>
-                            <td>{lodging.checkInDate}</td>
-                            <td>{lodging.checkOutDate}</td>
-                            <td>{lodging.address}</td>
-                            <td>{lodging.price}</td>
-                            <td>{lodging.bookingLink}</td>
-                            <td>{lodging.notes}</td>
-                            <td>{lodging.confirmationNumber}</td>
+                            <th>Check-In Date</th>
+                            <th>Check-Out Date</th>
+                            <th>Address</th>
+                            <th>Price</th>
+                            <th>Booking Link</th>
+                            <th>Notes</th>
+                            <th>Confirmation #</th>
+                            <th>Actions</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {lodgings.map((lodging) => (
+                            <>
+                                { editLodgingId === lodging.lodgingId ? <LodgingEditableRow editFormData={editFormData} handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}/> : <LodgingReadOnlyRow lodging={lodging} handleEditClick={handleEditClick} />}
+                            </>
+                        ))}
+                    </tbody>
+                </table>
+            </form>
             <h2>Add a Lodging</h2>
             <form onSubmit={handleAddFormSubmit}>
                 <input type="text" name="checkInDate" value={addFormData.checkInDate} placeholder="Check In Date" onChange={handleAddFormChange}></input>

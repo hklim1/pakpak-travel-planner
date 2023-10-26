@@ -3,7 +3,7 @@ import DayPlan from "../components/DayPlan";
 import Overview from "../components/Overview";
 import Lodging from "../components/Lodging";
 import SimpleMap from "../components/Map";
-import LodgingYT from "../components/Lodging.jsx";
+import LodgingYT from "../components/Lodging/Lodging.jsx"
 import { useParams } from "react-router-dom";
 import { getUserTrip } from "../firebaseUtils.js";
 
