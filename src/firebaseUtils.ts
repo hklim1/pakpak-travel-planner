@@ -177,6 +177,32 @@ export async function addActivity(_tripId, activityData) {
   });
 }
 
+export async function updateActivities(_tripId, allActivityData) {
+  const userId = localStorage["token"];
+  const userTrips = await getAllUserTrips();
+  const userTrip = await getUserTrip(_tripId);
+
+  const notImportantTrips: any = [];
+  for (let i = 0; i < userTrips.length; i++) {
+    const tripId = userTrips[i]["tripId"];
+    if (tripId != _tripId) {
+      notImportantTrips.push(userTrips[i]);
+    }
+  }
+
+  userTrip["activities"] = {
+    ...userTrip["activities"],
+  };
+
+  userTrip["activities"] = allActivityData;
+
+  const tripsRef = doc(firebaseDB, "Trips", userId);
+
+  await updateDoc(tripsRef, {
+    trips: [...notImportantTrips, userTrip],
+  });
+}
+
 export async function deleteActivity(_tripId, activityId) {
   // TO GET TRIP:
   const userId = localStorage["token"];

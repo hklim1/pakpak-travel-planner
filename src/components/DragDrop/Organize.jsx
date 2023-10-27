@@ -4,7 +4,7 @@ import { DndContext } from "@dnd-kit/core";
 import { Droppable } from "./Droppable";
 import { Draggable } from "./Draggable";
 
-import { getUserTrip } from "../../firebaseUtils";
+import { getUserTrip, updateActivities } from "../../firebaseUtils";
 import { useParams } from "react-router-dom";
 
 function timeDiff(startDate, endDate) {
@@ -27,9 +27,20 @@ export default function OrganizeDaySchedule() {
 
   useEffect(() => {
     getUserTrip(tripId).then((userData) => {
-      setActivities(Object.values(userData["activities"]));
+      const newActivities = userData["activities"];
+      setActivities(newActivities);
       setStartDate(userData.startDate);
       setEndDate(userData.endDate);
+
+      const newLocations = {};
+
+      for (const activityId in newActivities) {
+        const act = newActivities[activityId];
+        if (act["scheduledDay"]) {
+          newLocations[activityId] = act["scheduledDay"];
+        }
+      }
+      setLocations(newLocations);
     });
   }, []);
 
@@ -45,7 +56,7 @@ export default function OrganizeDaySchedule() {
 
   const containers = makeContainerArray(timeDifference);
 
-  const draggables = activities.map((activity) => (
+  const draggables = Object.values(activities).map((activity) => (
     <Draggable id={activity.activityId}>{activity.activityName}</Draggable>
   ));
 
@@ -78,12 +89,18 @@ export default function OrganizeDaySchedule() {
 
   function handleDragEnd(event) {
     const { over, active } = event;
-    setLocations({
+    const newLocation = {
       ...locations,
       ...{ [active.id]: over.id },
-    });
-    // If the item is dropped over a container, set it as the parent
-    // otherwise reset the parent to `null`
-    // setParent(over ? over.id : null);
+    };
+    setLocations(newLocation);
+
+    for (const activityId in newLocation) {
+      const scheduledDay = newLocation[activityId];
+      if (scheduledDay !== "Sandbox") {
+        activities[activityId]["scheduledDay"] = scheduledDay;
+      }
+    }
+    updateActivities(tripId, activities);
   }
 }
