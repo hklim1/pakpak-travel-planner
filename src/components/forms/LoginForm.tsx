@@ -1,5 +1,3 @@
-// complete
-
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -19,7 +17,7 @@ import {
   // useGoogleLogin,
 } from "@react-oauth/google";
 
-import { getFirebaseUser } from '../../firebaseUtils'
+import { getFirebaseUser } from "../../firebaseUtils";
 
 export default function LoginForm() {
   const navigate = useNavigate();
@@ -64,7 +62,7 @@ export default function LoginForm() {
     if (res.ok) {
       const data = await res.json();
       const accessToken = data.access_token;
-      const userFN = loginInfo.username!
+      const userFN = loginInfo.username!;
       console.log("LOGIN SUCCESSFUL ===============================");
       setUser({
         token: accessToken,
@@ -72,9 +70,9 @@ export default function LoginForm() {
       });
       localStorage.setItem("userFirstName", userFN);
       localStorage.setItem("token", accessToken);
-      localStorage.setItem("flaskUser", "true")
+      localStorage.setItem("flaskUser", "true");
       getFirebaseUser(accessToken);
-      console.log(localStorage['userFirstName'], localStorage['token'])
+      console.log(localStorage["userFirstName"], localStorage["token"]);
     } else window.alert("Failed Login");
   }
 
@@ -87,45 +85,45 @@ export default function LoginForm() {
   return (
     <div className="login-form-div">
       <h2>Login</h2>
-    <Form className="py-4 px-4" onSubmit={handleLoginData}>
-      <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridUsername">
-          <Form.Label>Username</Form.Label>
+      <Form className="py-4 px-4" onSubmit={handleLoginData}>
+        <Row className="mb-3">
+          <Form.Group as={Col} controlId="formGridUsername">
+            <Form.Label>Username</Form.Label>
+            <Form.Control
+              type="username"
+              placeholder="Username"
+              style={{ maxWidth: "450px" }}
+              ref={usernameField}
+              required
+            />
+          </Form.Group>
+        </Row>
+
+        <Form.Group className="mb-3" controlId="formGridEmail">
+          <Form.Label>Email</Form.Label>
           <Form.Control
-            type="username"
-            placeholder="Username"
+            placeholder="Enter Email Address"
             style={{ maxWidth: "450px" }}
-            ref={usernameField}
+            ref={emailField}
             required
           />
         </Form.Group>
-      </Row>
 
-      <Form.Group className="mb-3" controlId="formGridEmail">
-        <Form.Label>Email</Form.Label>
-        <Form.Control
-          placeholder="Enter Email Address"
-          style={{ maxWidth: "450px" }}
-          ref={emailField}
-          required
-        />
-      </Form.Group>
+        <Form.Group className="mb-3" controlId="formGridPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            placeholder="Enter password"
+            style={{ maxWidth: "450px" }}
+            ref={passwordField}
+            required
+            type="password"
+          />
+        </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formGridPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          placeholder="Enter password"
-          style={{ maxWidth: "450px" }}
-          ref={passwordField}
-          required
-          type="password"
-        />
-      </Form.Group>
-
-      <Button variant="primary" type="submit" className="my-3">
-        Submit
-      </Button>
-    </Form>
+        <Button variant="primary" type="submit" className="my-3">
+          Submit
+        </Button>
+      </Form>
     </div>
   );
 }
@@ -141,14 +139,14 @@ export function Login() {
       res.credential
     );
     const accessToken = userInfo.sub;
-    const userFN = userInfo.given_name
+    const userFN = userInfo.given_name;
     setUser({
       token: accessToken,
       username: accessToken ? userInfo.given_name : "",
     });
-    localStorage.setItem("userFirstName", userFN)
+    localStorage.setItem("userFirstName", userFN);
     localStorage.setItem("token", accessToken);
-    getFirebaseUser(accessToken)
+    getFirebaseUser(accessToken);
     navigate("/");
     console.log(userInfo);
     console.log(localStorage, "====LOCAL STORAGE======");

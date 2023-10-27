@@ -56,6 +56,7 @@ function App(): JSX.Element {
             <Route path="/edit/:tripId" element={<PlanningPage />} />
             <Route path="/plan" element={<StartPlanningPage />} />
             <Route path="/upcoming" element={<UpcomingTripsPage />} />
+            <Route path="/past" element={<UpcomingTripsPage />}/>
             <Route path="/settings" element={<Settings />}></Route>
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>

@@ -1,5 +1,3 @@
-// https://www.youtube.com/watch?v=eOs0vm8wChg&t=24s&ab_channel=MShowKat
-
 import React, { useState } from "react";
 import "./Sidebar.css";
 import { Home,
