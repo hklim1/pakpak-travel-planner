@@ -71,6 +71,7 @@ export default function UserForm({ edit }: { edit: boolean }) {
   return (
     <>
       <div className="register-form">
+        {edit ? <h2>Edit Account</h2> : <h2>Register User</h2>}
         <Form className="py-4 px-4" onSubmit={handleRegisterData}>
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridUsername">
@@ -119,6 +120,7 @@ export default function UserForm({ edit }: { edit: boolean }) {
               style={{ maxWidth: "615px" }}
               ref={passwordField}
               required
+              type="password"
             />
           </Form.Group>
 

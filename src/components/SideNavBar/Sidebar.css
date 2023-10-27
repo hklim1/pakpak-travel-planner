@@ -3,7 +3,7 @@
 .side-nav-container {
 	background-color: var(--dark);
 	width: 250px;
-	height: 100vh;
+	/* height: 100vh; */
 	position: relative;
 	color: var(--light);
 
@@ -13,7 +13,7 @@
 
 .side-nav-container-NX {
 	width: 85px;
-    height: 100vh;
+    /* height: 100vh; */
     margin-left: 0;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .logo-img {
-    padding: 0px 10px;
+    padding: 0px 3px;
 }
 
 .hamburger {
@@ -54,7 +54,8 @@
 	border: none;
 	cursor: pointer;
 
-	margin: auto -35px;
+	margin-top: 10px;
+	margin-right: 7px;
     background-color: var(--primary);
     border: 2px solid var(--light);
     padding: 6px 18px;

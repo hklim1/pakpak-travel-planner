@@ -72,6 +72,7 @@ export default function LoginForm() {
       });
       localStorage.setItem("userFirstName", userFN);
       localStorage.setItem("token", accessToken);
+      localStorage.setItem("flaskUser", "true")
       getFirebaseUser(accessToken);
       console.log(localStorage['userFirstName'], localStorage['token'])
     } else window.alert("Failed Login");
@@ -84,6 +85,8 @@ export default function LoginForm() {
   }
 
   return (
+    <div className="login-form-div">
+      <h2>Login</h2>
     <Form className="py-4 px-4" onSubmit={handleLoginData}>
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridUsername">
@@ -115,6 +118,7 @@ export default function LoginForm() {
           style={{ maxWidth: "450px" }}
           ref={passwordField}
           required
+          type="password"
         />
       </Form.Group>
 
@@ -122,6 +126,7 @@ export default function LoginForm() {
         Submit
       </Button>
     </Form>
+    </div>
   );
 }
 

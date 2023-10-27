@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { doc, deleteDoc } from "firebase/firestore";
 import {
   Timestamp,
   collection,
@@ -9,6 +10,7 @@ import {
   setDoc,
   updateDoc,
 } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -69,6 +71,14 @@ export async function getUserTrip(_tripId) {
     }
   }
 }
+
+// =========================== CRUD OPERATIONS FOR USER ===========================================
+
+export async function deleteUser() {
+  await deleteDoc(doc(firebaseDB, "Trips", `${localStorage['token']}`));
+}
+
+// =========================== CRUD OPERATIONS FOR LODGING ========================================
 
 export async function addLodging(_tripId, lodgingData) {
   const userId = localStorage["token"];

@@ -55,9 +55,10 @@ export default function Sidebar() {
                         {/* <img src="icons/Logo.svg" alt="IMG BY PAKPAK TITLE" /> */}
                         {/* <img src="~lucide-static/icons/home.svg" className="logo-img"/> */}
                         <div className="logo-img">
-                            <Home size={30} />
+                            {/* <Home size={30} /> */}
+                            <img src="../src/assets/PakPakLogo.png" width="160px" height="60px"></img>
                         </div>
-                        <h2 className="sidebar-title">Pakpak</h2>
+                        {/* <h2 className="sidebar-title">Pakpak</h2> */}
                     </div>
                 )}
                 <button className={
@@ -71,7 +72,7 @@ export default function Sidebar() {
                 </button>
             </div>
             <div className="nav-menu">{menuItems.map(({text, icon, link}) => (
-                <a href={link} className={isExpanded ? "menu-item" : "menu-item menu-item-NX"}>
+                <a href={localStorage['token'] || text=="HOME" ? link : '/login'} className={isExpanded ? "menu-item" : "menu-item menu-item-NX"}>
                     <div className="menu-item-img">
                         {icon}
                     </div>
