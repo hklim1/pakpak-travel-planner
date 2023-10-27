@@ -3,8 +3,9 @@ import DayPlan from "../components/DayPlan";
 // import Overview from "../components/Overview"
 import SimpleMap from "../components/Map";
 import Lodging from "../components/Lodging/Lodging.jsx"
-import Board from "../components/Organize/Board.jsx"
-import KanbanBoard from "../components/DragDrop/KanbanBoard.js"
+import Transportation from "../components/Transportation/Transportation.jsx"
+import Activities from "../components/Activities/Activities.jsx"
+import OrganizeDaySchedule from "../components/DragDrop/Organize.jsx"
 import { useParams } from "react-router-dom";
 import { getUserTrip } from "../firebaseUtils.js";
 
@@ -69,7 +70,7 @@ export default function PlanningPage() {
     <>
       <div className="triangle-organize"></div>
       <div className="planning-page-divs">
-        <KanbanBoard />
+        <OrganizeDaySchedule />
       </div>
     </>
   );
@@ -78,27 +79,25 @@ export default function PlanningPage() {
     <>
       <div className="triangle"></div>
       <div className="planning-page-divs">
-        {/* <Lodging /> */}
         <Lodging />
       </div>
     </>
   );
 
-  const Transportation = () => (
+  const Transportation1 = () => (
     <>
       <div className="triangle-transport"></div>
       <div className="planning-page-divs">
-        <DayPlan date={new Date()} lodging="123 Abc St., Chicago, IL" />
+        <Transportation />
       </div>
     </>
   );
 
-  const Activities = () => (
+  const Activities1 = () => (
     <>
       <div className="triangle-activities"></div>
       <div className="planning-page-divs">
-        <DayPlan date={new Date()} lodging="123 Abc St., Chicago, IL" />
-        <DayPlan date={new Date()} lodging="123 Abc St., Chicago, IL" />
+        <Activities />
       </div>
     </>
   );
@@ -156,8 +155,8 @@ export default function PlanningPage() {
         <div className="mini-screen">
           {showOrganize && <Organize1 />}
           {showLodging && <Lodging1 />}
-          {showTransportation && <Transportation />}
-          {showActivities && <Activities />}
+          {showTransportation && <Transportation1 />}
+          {showActivities && <Activities1 />}
           {showMap && <Map />}
         </div>
       </div>

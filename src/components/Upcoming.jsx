@@ -67,7 +67,7 @@ function generateRandomIcon() {
   const ChosenIcon = iconArray[roundedRandomNumber]
   return < ChosenIcon size={120} />
 }
-export default function UpcomingTrips3() {
+export default function UpcomingTrips() {
   const [aUsersTrips, setAUsersTrips] = useState([]);
   const navigate = useNavigate();
 

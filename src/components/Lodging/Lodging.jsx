@@ -23,7 +23,7 @@ export default function Lodging() {
         checkInDate: '',
         checkOutDate: '',
         address: '',
-        price: 0,
+        price: '',
         bookingLink: '',
         notes: '',
         confirmationNumber: ''
@@ -33,7 +33,7 @@ export default function Lodging() {
         checkInDate: '',
         checkOutDate: '',
         address: '',
-        price: 0,
+        price: '',
         bookingLink: '',
         notes: '',
         confirmationNumber: ''
@@ -97,7 +97,7 @@ export default function Lodging() {
             checkInDate: '',
             checkOutDate: '',
             address: '',
-            price: 0,
+            price: '',
             bookingLink: '',
             notes: '',
             confirmationNumber: ''
@@ -173,13 +173,13 @@ export default function Lodging() {
         <div className="lodging-container">
             <h4>Add a Lodging:</h4>
             <form id="addLodgingForm" onSubmit={handleAddFormSubmit}>
-                <input type="date" name="checkInDate" value={addFormData.checkInDate} placeholder="Check In Date" onChange={handleAddFormChange}></input>
-                <input type="date" name="checkOutDate" value={addFormData.checkOutDate} placeholder="Check Out Date" onChange={handleAddFormChange}></input>
-                <input type="text" name="address" value={addFormData.address} required="required" placeholder="Address" size='17' onChange={handleAddFormChange}></input>
-                <input type="text" name="price" size='17' value={addFormData.price} placeholder="Price" onChange={handleAddFormChange}></input>
-                <input type="text" name="bookingLink" size='17' value={addFormData.bookingLink} placeholder="Booking Link" onChange={handleAddFormChange}></input>
-                <input type="text" name="notes" size='17' value={addFormData.notes} placeholder="Notes" onChange={handleAddFormChange}></input>
-                <input type="text" name="confirmationNumber" size='17' value={addFormData.confirmationNumber} placeholder="Confirmation #" onChange={handleAddFormChange}></input>
+                <input type="date" name="checkInDate" value={addFormData.checkInDate} placeholder="Check In Date" size='19' onChange={handleAddFormChange}></input>
+                <input type="date" name="checkOutDate" value={addFormData.checkOutDate} placeholder="Check Out Date" size='19' onChange={handleAddFormChange}></input>
+                <input type="text" name="address" value={addFormData.address} required="required" placeholder="Address" size='19' onChange={handleAddFormChange}></input>
+                <input type="text" name="price" size='19' value={addFormData.price} placeholder="Price" onChange={handleAddFormChange}></input>
+                <input type="text" name="bookingLink" size='19' value={addFormData.bookingLink} placeholder="Booking Link" onChange={handleAddFormChange}></input>
+                <input type="text" name="notes" size='19' value={addFormData.notes} placeholder="Notes" onChange={handleAddFormChange}></input>
+                <input type="text" name="confirmationNumber" size='19' value={addFormData.confirmationNumber} placeholder="Confirmation #" onChange={handleAddFormChange}></input>
                 <button className="add-btns" type="submit">Add</button>
             </form>
             <hr />

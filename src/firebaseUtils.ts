@@ -71,6 +71,10 @@ const firebaseConfig = {
       }
     }
 
+    userTrip['lodgings'] = {
+      ...userTrip['lodgings']
+    };
+
     userTrip['lodgings'][lodgingData.lodgingId] = lodgingData;
 
     const tripsRef = doc(firebaseDB, 'Trips', userId);
@@ -132,6 +136,113 @@ const firebaseConfig = {
       trips: [...notImportantTrips, userTrip] 
     })
   }
+
+  // ======================= CRUD OPERATIONS FOR ACTIVITIES ============================
+
+  export async function addActivity(_tripId, activityData) {
+    const userId = localStorage['token']
+    const userTrips = await getAllUserTrips()
+    const userTrip = await getUserTrip(_tripId)
+    
+    const notImportantTrips: any = []
+    for (let i=0; i < userTrips.length; i++){
+      const tripId=userTrips[i]['tripId']
+      if (tripId != _tripId) {
+        notImportantTrips.push(userTrips[i])
+      }
+    }
+
+    userTrip['activities'] = {
+      ...userTrip['activities']
+    };
+
+    userTrip['activities'][activityData.activityId] = activityData;
+
+    const tripsRef = doc(firebaseDB, 'Trips', userId);
+
+    await updateDoc(tripsRef, {
+      trips: [...notImportantTrips, userTrip] 
+    })
+  }
+
+  export async function deleteActivity(_tripId, activityId) {
+    // TO GET TRIP:
+    const userId = localStorage['token']
+    const userTrips = await getAllUserTrips()
+    const userTrip = await getUserTrip(_tripId)
+    const tripActivities = userTrip['activities']
+    
+    const notImportantTrips: any = []
+
+    for (let i=0; i < tripActivities.length; i++){
+      const tripId=userTrips[i]['tripId']
+      if (tripId != _tripId) {
+        notImportantTrips.push(userTrips[i])
+      }
+    }
+
+    delete userTrip['activities'][activityId];
+
+    const tripsRef = doc(firebaseDB, 'Trips', userId);
+
+    await updateDoc(tripsRef, {
+      trips: [...notImportantTrips, userTrip] 
+    })
+  }
+
+  // ======================= CRUD OPERATIONS FOR ACTIVITIES ============================
+
+  export async function addVehicle(_tripId, vehicleData) {
+    const userId = localStorage['token']
+    const userTrips = await getAllUserTrips()
+    const userTrip = await getUserTrip(_tripId)
+    
+    const notImportantTrips: any = []
+    for (let i=0; i < userTrips.length; i++){
+      const tripId=userTrips[i]['tripId']
+      if (tripId != _tripId) {
+        notImportantTrips.push(userTrips[i])
+      }
+    }
+
+    userTrip['transportation'] = {
+      ...userTrip['transportation']
+    };
+
+    userTrip['transportation'][vehicleData.vehicleId] = vehicleData;
+
+    const tripsRef = doc(firebaseDB, 'Trips', userId);
+
+    await updateDoc(tripsRef, {
+      trips: [...notImportantTrips, userTrip] 
+    })
+  }
+
+  export async function deleteVehicle(_tripId, vehicleId) {
+    const userId = localStorage['token']
+    const userTrips = await getAllUserTrips()
+    const userTrip = await getUserTrip(_tripId)
+    const tripVehicles = userTrip['transportation']
+    
+    const notImportantTrips: any = []
+
+    for (let i=0; i < tripVehicles.length; i++){
+      const tripId=userTrips[i]['tripId']
+      if (tripId != _tripId) {
+        notImportantTrips.push(userTrips[i])
+      }
+    }
+
+    delete userTrip['transportation'][vehicleId];
+
+    const tripsRef = doc(firebaseDB, 'Trips', userId);
+
+    await updateDoc(tripsRef, {
+      trips: [...notImportantTrips, userTrip] 
+    })
+  }
+
+  // ================================ CREATE NEW TRIP ==========================================
 
   export async function createNewTrip(_id, _tripName, _startDate, _endDate){
     const newTrip = doc(firebaseDB, "Trips", `${localStorage['token']}`);

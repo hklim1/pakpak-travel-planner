@@ -9,6 +9,7 @@
 body{
   background-color: white;
   color: black;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 /* .header{
@@ -267,10 +268,13 @@ body{
   display: inline-flex;
   position: absolute;
   top: 12%;
-  border: 4px solid #dedbd2;
+  /* border: 4px solid #dedbd2; */
+  border: 4px solid #b0c4b1;
   border-radius: 10px;
   width: 98%;
   height: 90%;
+  /* overflow-x: auto;
+  white-space: nowrap; */
 }
 
 .triangle {
@@ -281,7 +285,7 @@ body{
   height: 0;
   border: 10px solid transparent;
   border-top: 0;
-  border-bottom: 20px solid #dedbd2;
+  border-bottom: 20px solid #b0c4b1;
 }
 
 .triangle-organize {
@@ -292,7 +296,7 @@ body{
   height: 0;
   border: 10px solid transparent;
   border-top: 0;
-  border-bottom: 20px solid #dedbd2;
+  border-bottom: 20px solid #b0c4b1;
 }
 
 .triangle-transport {
@@ -303,7 +307,7 @@ body{
   height: 0;
   border: 10px solid transparent;
   border-top: 0;
-  border-bottom: 20px solid #dedbd2;
+  border-bottom: 20px solid #b0c4b1;
 }
 
 .triangle-activities {
@@ -314,7 +318,7 @@ body{
   height: 0;
   border: 10px solid transparent;
   border-top: 0;
-  border-bottom: 20px solid #dedbd2;
+  border-bottom: 20px solid #b0c4b1;
 }
 
 .triangle-map {
@@ -325,13 +329,15 @@ body{
   height: 0;
   border: 10px solid transparent;
   border-top: 0;
-  border-bottom: 20px solid #dedbd2;
+  border-bottom: 20px solid #b0c4b1;
 }
 
 .planning-page-divs{
   display: inline flex;
   /* border: 2px solid green; */
   width: 100%;
+  /* overflow-x: auto; */
+  /* white-space: nowrap; */
 }
 
 #top-lodging-btn,
@@ -339,10 +345,16 @@ body{
 #top-activities-btn,
 #top-organize-btn,
 #top-map-btn {
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  font-variant-caps: all-petite-caps;
+  font-size: x-large;
+  font-weight: 500;
   width: 180px;
   height: 40px;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #top-lodging-btn:hover,
@@ -351,6 +363,8 @@ body{
 #top-organize-btn:hover,
 #top-map-btn:hover {
   background-color: #b0c4b1;
+  font-weight: 600;
+  /* background-color: rgba(77, 175, 124, 0.7); */
 
 }
 
@@ -366,6 +380,7 @@ body{
 
 .active-button {
   background-color: #b0c4b1;
+  font-weight: 600;
 }
 
 /* LODGING COMPONENT ============================================================================= */
@@ -386,6 +401,8 @@ body{
 
 .lodging-table thead{
   background-color: rgba(242, 121, 53, 0.7);
+  font-variant-caps: all-small-caps;
+  font-size: large;
 }
 
 #action-column{
@@ -473,6 +490,151 @@ hr {
   margin-left: 4%;
   margin-bottom: 30px;
 }
+
+/* =========================== ACTIVITIES COMPONENT ============================================== */
+.vehicle-container {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  margin: 10px;
+}
+
+.vehicles-table, th, td {
+  border: solid 1px black;
+  color: black;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.vehicles-table thead{
+  background-color: rgba(213, 184, 255, 0.7);;
+  font-variant-caps: all-small-caps;
+  font-size: large;
+}
+
+.vehicles-table th, td{
+  padding: 5px;
+}
+
+.vehicles-table tr:nth-child(even) {
+  background-color: rgba(213, 184, 255, 0.2);;
+}
+
+#addVehicleForm{
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+#addVehicleForm input {
+  margin-right: 5px;
+}
+
+/* =========================== ACTIVITIES COMPONENT ============================================== */
+
+.activity-container {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  margin: 10px;
+}
+
+.activities-table, th, td {
+  border: solid 1px black;
+  color: black;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.activities-table thead{
+  background-color: rgba(129, 207, 224, 0.7);
+  font-variant-caps: all-small-caps;
+  font-size: large;
+}
+
+#action-column{
+  display: flex;
+  align-items: center;
+  flex-direction:column;
+}
+
+.activities-table th, td{
+  padding: 5px;
+}
+
+.activities-table tr:nth-child(even) {
+  background-color: rgba(129, 207, 224, 0.2);
+}
+
+#addActivityForm{
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+/* =========================== ORGANIZE (DRAG & DROP) ============================================ */
+.overall-box{
+  overflow-x: scroll;
+  overflow-y: auto;
+  display: inline-flex;
+  background-color: rgba(236, 100, 75, 0.3);
+
+}
+
+.draggable-btns{
+  width: 250px;
+  height: 80px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  /* background-color: rgba(77, 175, 124, 0.3); */
+  background-color: rgba(250, 216, 89, 0.7);
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: x-large;
+  font-variant-caps: all-small-caps;
+}
+
+.draggable-btns:hover{
+  background-color: #ffd80b;
+}
+
+.droppable-content{
+  width: 300px;
+  margin: 10px;
+  border: 3px solid black;
+  border-radius: 20px;
+  text-align: center;
+  /* padding: 10px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* overflow-x: auto; */
+  /* overflow-y: auto; */
+}
+
+.organize-headers{
+  font-weight:600;
+  font-variant-caps:all-small-caps;
+  text-decoration: underline;
+  text-decoration-style: double;
+  text-decoration-thickness: 2px;
+}
+
+.header-top {
+  width: 100%;
+  height: 14%;
+  margin-bottom: 10px;
+  border-bottom: 3px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark);
+  color: white;
+  border-start-start-radius: 16px;
+  border-top-right-radius: 16px;
+}
 /* ======OVERVIEW================================================================================= */
 
 .start-planning-container{
@@ -503,6 +665,10 @@ hr {
 
 /* UPCOMING TRIPS =============================================================================== */
 
+.upcoming-trips-container{
+  max-width: 100%;
+  /* border: 3px solid red; */
+}
 #upcoming-trips-heading{
   margin-top: 100px;
   margin-left: 60px;
@@ -511,8 +677,11 @@ hr {
   text-decoration: underline;
 }
 .upcoming-trips-divs{
-  display: inline-flex;
-  margin: 10px 50px 100px 50px;
+  /* border: 1px solid purple; */
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 30px 100px 40px;
   justify-content: space-around;
 }
 

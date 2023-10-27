@@ -1,4 +1,4 @@
-import UpcomingTrips3 from '../components/Upcoming2'
+import UpcomingTrips3 from '../components/Upcoming'
 
 export default function UpcomingTripsPage() {
   return (
