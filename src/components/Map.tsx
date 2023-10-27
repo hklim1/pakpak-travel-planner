@@ -16,7 +16,7 @@ export default function SimpleMap() {
 
   return (
     // NOTE FROM GMAPS: Important! Always set the container height explicitly
-    <div style={{ height: "100vh", width: "100%" }}>
+    <div style={{ height: "100%", width: "100%" }}>
       {/* <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyC0ybQdzfihqslkgokEYgVi6KQP_mTn28Q" }}
         defaultCenter={defaultProps.center}
@@ -24,8 +24,8 @@ export default function SimpleMap() {
         style={{ width: "100%", height: "500" }}
       ></GoogleMapReact> */}
       <iframe
-        width="600"
-        height="450"
+        width="100%"
+        height="100%"
         style={{border:"0"}}
         loading="lazy"
         allowFullScreen={true}
