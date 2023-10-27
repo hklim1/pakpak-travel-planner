@@ -7,7 +7,8 @@ LayoutGrid,
 BookOpenText,
 PenSquare,
 CalendarClock,
-Archive
+Archive,
+Settings
 } from 'lucide-react';
 
 export default function Sidebar() {
@@ -37,6 +38,11 @@ export default function Sidebar() {
             text: "PAST",
             icon: <Archive size={30}/>,
             link: "/past"
+        },
+        {
+            text: "SETTINGS",
+            icon: <Settings size={30}/>,
+            link: "/settings"
         }
     ]
 

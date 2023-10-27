@@ -1,5 +1,3 @@
-// complete
-
 import { createContext, useState, Dispatch, SetStateAction } from 'react';
 import { LoggedUser } from '../types';
 

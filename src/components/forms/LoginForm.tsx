@@ -64,12 +64,16 @@ export default function LoginForm() {
     if (res.ok) {
       const data = await res.json();
       const accessToken = data.access_token;
+      const userFN = loginInfo.username!
       console.log("LOGIN SUCCESSFUL ===============================");
       setUser({
         token: accessToken,
         username: loginInfo.username ? loginInfo.username : "",
       });
+      localStorage.setItem("userFirstName", userFN);
       localStorage.setItem("token", accessToken);
+      getFirebaseUser(accessToken);
+      console.log(localStorage['userFirstName'], localStorage['token'])
     } else window.alert("Failed Login");
   }
 
