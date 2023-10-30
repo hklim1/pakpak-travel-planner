@@ -696,6 +696,8 @@ hr {
   max-width: 100%;
   /* border: 3px solid red; */
 }
+
+#past-trips-heading,
 #upcoming-trips-heading{
   margin-top: 100px;
   margin-left: 60px;
@@ -703,6 +705,7 @@ hr {
   font-variant-caps: all-small-caps;
   text-decoration: underline;
 }
+
 .upcoming-trips-divs{
   /* border: 1px solid purple; */
   max-width: 100%;
@@ -725,9 +728,46 @@ hr {
 }
 
 .card-body {
-  background-color: #cfe1b9;}
+  background-color: #cfe1b9;
+}
+  /* background-color: blue; } */
 
-  /* =============================== ACCOUNT SETTINGS ========================================== */
+
+ /* =============================== PAST TRIPS =================================================*/
+
+ .past-trips-container{
+  max-width: 100%;
+  /* border: 3px solid blue; */
+}
+
+ .past-trips-divs{
+  /* border: 1px solid purple; */
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 30px 100px 40px;
+  justify-content: space-around;
+}
+
+.past-whole-card {
+  margin: 15px;
+  border: 1px solid black;
+  border-radius: 6px;
+}
+
+.past-card-icon-div {
+  border-bottom: 1px solid black;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.past-card-color {
+  background-color: yellow;
+}
+
+
+ /* =============================== ACCOUNT SETTINGS ========================================== */
 
   .user-form-pages{
     margin-top: 120px;

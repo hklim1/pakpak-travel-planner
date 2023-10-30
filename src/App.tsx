@@ -13,6 +13,7 @@ import Settings from "./components/Settings";
 import Logout from "./components/Logout";
 import PlanningPage from "./pages/PlanningPage";
 import StartPlanningPage from "./pages/StartPlanningPage.js";
+import PastTripsPage from "./pages/PastTripsPage.js";
 import Sidebar from "../src/components/SideNavBar/Sidebar.jsx";
 import { initFirebase } from "./firebaseUtils";
 import UpcomingTripsPage from "./pages/UpcomingTripsPage.js";
@@ -56,7 +57,7 @@ function App(): JSX.Element {
             <Route path="/edit/:tripId" element={<PlanningPage />} />
             <Route path="/plan" element={<StartPlanningPage />} />
             <Route path="/upcoming" element={<UpcomingTripsPage />} />
-            <Route path="/past" element={<UpcomingTripsPage />}/>
+            <Route path="/past" element={<PastTripsPage />}/>
             <Route path="/settings" element={<Settings />}></Route>
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
