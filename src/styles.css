@@ -6,6 +6,7 @@
   /* @apply bg-black text-white box-border; */
 }
 /* #edafb8; */
+
 body{
   background-color: white;
   color: black;
@@ -57,6 +58,7 @@ body{
   margin: 20px 10px 0px 10px;
   right: 12%;
 }
+
 
 /* LANDING PAGE =================================================================== */
 /* ************TOP CONTAINER***************** */
@@ -140,6 +142,7 @@ body{
 .left-img img{
   max-width: 40%;
 }
+
 .main-text {
   max-width: 60%;
   position: absolute;
@@ -175,6 +178,7 @@ body{
   left: 11%;
   top: 40%;
 }
+
 .sub-text p{
   color: #585656;
   font-family:sans-serif;
@@ -252,6 +256,7 @@ body{
 
 /* #half-rectangle-image    */
 /* REGISTER FORM ================================================================== */
+
 .register-form, .login-form-div {
   margin-top: 10%;
   margin-left: 5%;
@@ -278,7 +283,10 @@ body{
 .flask-settings h2{
   text-decoration: underline;
 }
-/* PLANNING PAGE ================================================================== */
+
+
+/* ================================ PLANNING PAGE =============================================== */
+
 .planning-buttons {
   margin: 100px 50px 40px 50px;
   display: flex;
@@ -406,6 +414,7 @@ body{
   font-weight: 600;
 }
 
+
 /* LODGING COMPONENT ============================================================================= */
 
 .lodging-container {
@@ -514,7 +523,9 @@ hr {
   margin-bottom: 30px;
 }
 
+
 /* =========================== ACTIVITIES COMPONENT ============================================== */
+
 .vehicle-container {
   width: 100%;
   overflow-x: auto;
@@ -553,6 +564,7 @@ hr {
 #addVehicleForm input {
   margin-right: 5px;
 }
+
 
 /* =========================== ACTIVITIES COMPONENT ============================================== */
 
@@ -597,7 +609,9 @@ hr {
   margin-bottom: 30px;
 }
 
+
 /* =========================== ORGANIZE (DRAG & DROP) ============================================ */
+
 .overall-box{
   overflow-x: scroll;
   /* overflow-y: auto; */
@@ -662,6 +676,8 @@ hr {
   border-start-start-radius: 16px;
   border-top-right-radius: 16px;
 }
+
+
 /* ======OVERVIEW================================================================================= */
 
 .start-planning-container{
@@ -689,6 +705,7 @@ hr {
   margin-bottom: 20px;
   color: #585656;
 }
+
 
 /* UPCOMING TRIPS =============================================================================== */
 
@@ -720,6 +737,7 @@ hr {
   border: 1px solid black;
   border-radius: 6px;
 }
+
 .card-icon-div {
   border-bottom: 1px solid black;
   padding: 30px;

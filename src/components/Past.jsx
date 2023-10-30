@@ -69,7 +69,7 @@ function generateRandomIcon() {
 }
 
 const pastCardColorStyle = {
-    borderColor: 'yellow'
+    backgroundColor: "yellow"
 }
 
 export default function PastTrips() {
